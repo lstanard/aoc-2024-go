@@ -1,10 +1,26 @@
 package read_input
 
-import "fmt"
+import (
+  "fmt"
+  "io"
+  "os"
+)
 
-func ReadInputFile() string {
-	fmt.Println("Reading input file...")
+func ReadInputFile(path string) (bool, []byte) {
+  fmt.Println("Reading input file:", path)
 
-	data := "Hello, World!"
-  return data
+  file, err := os.Open(path)
+  if err != nil {
+    fmt.Println("Error opening file:", err)
+    return false, nil
+  }
+  defer file.Close()
+
+  content, err := io.ReadAll(file)
+  if err != nil {
+    fmt.Println("Error reading file:", err)
+    return false, nil
+  }
+
+  return true, content
 }
