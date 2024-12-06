@@ -1,9 +1,10 @@
-package read_input
+package utils
 
 import (
   "fmt"
   "io"
   "os"
+  "strings"
 )
 
 func ReadInputFile(path string) (bool, []byte) {
@@ -23,4 +24,10 @@ func ReadInputFile(path string) (bool, []byte) {
   }
 
   return true, content
+}
+
+func SplitInputToLines(data []byte) []string {
+  stringData := string(data)
+  lines := strings.Split(stringData, "\n")
+  return lines
 }
