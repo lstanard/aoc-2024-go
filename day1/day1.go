@@ -8,8 +8,14 @@ import (
 	"strings"
 )
 
-func ParseInput() ([]int, []int) {
-  success, data := utils.ReadInputFile("day1/input.txt")
+func ParseInput(sample bool) ([]int, []int) {
+  path := ""
+  if sample {
+    path = "day1/input-sample.txt"
+  } else {
+    path = "day1/input.txt"
+  }
+  success, data := utils.ReadInputFile(path)
 
   if !success {
     return nil, nil
@@ -38,7 +44,7 @@ func ParseInput() ([]int, []int) {
 }
 
 func Day1Part1() {
-  listA, listB := ParseInput()
+  listA, listB := ParseInput(false)
 
   totalDistance := 0
   for i := 0; i < len(listA); i++ {
@@ -52,4 +58,21 @@ func Day1Part1() {
   }
 
   fmt.Println("Total Distance:", totalDistance)
+}
+
+func Day1Part2() {
+  A, B := ParseInput(false)
+  countMap := make(map[int]int)
+  for _, b := range B {
+    countMap[b]++
+  }
+
+  result := 0
+  for _, a := range A {
+    if count, ok := countMap[a]; ok {
+      result += a * count
+    }
+  }
+
+  fmt.Println("Result:", result)
 }

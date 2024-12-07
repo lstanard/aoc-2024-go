@@ -15,5 +15,6 @@ func main() {
     // sample := args[3]
   }
 
-  day1.Day1Part1()
+  // day1.Day1Part1()
+  day1.Day1Part2()
 }
