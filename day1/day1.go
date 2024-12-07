@@ -8,11 +8,11 @@ import (
 	"strings"
 )
 
-func Day1() int {
+func ParseInput() ([]int, []int) {
   success, data := utils.ReadInputFile("day1/input.txt")
 
   if !success {
-    return 0
+    return nil, nil
   }
 
   lines := utils.SplitInputToLines(data)
@@ -34,6 +34,12 @@ func Day1() int {
   sort.Ints(listA)
   sort.Ints(listB)
 
+  return listA, listB
+}
+
+func Day1Part1() {
+  listA, listB := ParseInput()
+
   totalDistance := 0
   for i := 0; i < len(listA); i++ {
     distance := 0
@@ -46,5 +52,4 @@ func Day1() int {
   }
 
   fmt.Println("Total Distance:", totalDistance)
-  return totalDistance
 }
