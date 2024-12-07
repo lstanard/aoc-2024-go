@@ -3,7 +3,9 @@ package main
 import (
 	"aoc-2024-go/utils"
 	"fmt"
+	"sort"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -13,29 +15,29 @@ func main() {
     return
   }
 
+  lines := utils.SplitInputToLines(data)
+
   listA := []int{}
   listB := []int{}
-  for i, b := range data {
-    fmt.Println("byte:", b)
-    s := string(b)
+  for _, line := range lines {
+    nums := strings.Fields(line)
 
-    if s != "" {
-      fmt.Println("byte to string:", s)
-      num, err := strconv.Atoi(s)
-      fmt.Println("number/index:", num, i)
-
-      if err != nil {
-        fmt.Println("Error converting to number:", err)
-      }
-
-      if i % 2 == 0 {
-        listA = append(listA, num)
-      } else {
-        listB = append(listB, num)
-      }
+    if len(nums) <= 0 {
+      continue
     }
+    valA, _ := strconv.Atoi(nums[0])
+    valB, _ := strconv.Atoi(nums[1])
+
+    listA = append(listA, valA)
+    listB = append(listB, valB)
   }
 
+  sort.Ints(listA)
+  sort.Ints(listB)
   fmt.Println("List A:", listA)
   fmt.Println("List B:", listB)
+
+  totalDistance := 0
+
+  return totalDistance
 }
