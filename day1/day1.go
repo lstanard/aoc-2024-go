@@ -11,9 +11,9 @@ import (
 func ParseInput(sample bool) ([]int, []int) {
   path := ""
   if sample {
-    path = "day1/input-sample.txt"
+    path = "input-sample.txt"
   } else {
-    path = "day1/input.txt"
+    path = "input.txt"
   }
   success, data := utils.ReadInputFile(path)
 
@@ -43,7 +43,7 @@ func ParseInput(sample bool) ([]int, []int) {
   return listA, listB
 }
 
-func Day1Part1() {
+func Part1() int {
   listA, listB := ParseInput(false)
 
   totalDistance := 0
@@ -58,9 +58,10 @@ func Day1Part1() {
   }
 
   fmt.Println("Total Distance:", totalDistance)
+  return totalDistance
 }
 
-func Day1Part2() {
+func Part2() int {
   A, B := ParseInput(false)
   countMap := make(map[int]int)
   for _, b := range B {
@@ -75,4 +76,5 @@ func Day1Part2() {
   }
 
   fmt.Println("Result:", result)
+  return result
 }
