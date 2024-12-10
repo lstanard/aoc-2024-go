@@ -43,8 +43,8 @@ func ParseInput(sample bool) ([]int, []int) {
   return listA, listB
 }
 
-func Part1() int {
-  listA, listB := ParseInput(false)
+func Part1(sample bool) int {
+  listA, listB := ParseInput(sample)
 
   totalDistance := 0
   for i := 0; i < len(listA); i++ {
@@ -61,8 +61,8 @@ func Part1() int {
   return totalDistance
 }
 
-func Part2() int {
-  A, B := ParseInput(false)
+func Part2(sample bool) int {
+  A, B := ParseInput(sample)
   countMap := make(map[int]int)
   for _, b := range B {
     countMap[b]++

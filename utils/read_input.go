@@ -29,6 +29,5 @@ func ReadInputFile(path string) (bool, []byte) {
 func SplitInputToLines(data []byte) []string {
   stringData := string(data)
   lines := strings.Split(stringData, "\n")
-  // TODO: maybe trim the last line if it's empty
   return lines
 }
