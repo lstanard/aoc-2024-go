@@ -14,7 +14,7 @@ func TestPart1_SampleData(t *testing.T) {
 
 func TestPart1(t *testing.T) {
   result := day2.Part1(false)
-  if result != 2 {
+  if result != 213 {
     t.Errorf("Expected 2, got %d", result)
   }
 }
