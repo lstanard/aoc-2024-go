@@ -2,6 +2,7 @@ package day3
 
 import (
 	"aoc-2024-go/utils"
+	"fmt"
 	"regexp"
 	"strconv"
 )
@@ -41,4 +42,11 @@ func Part1(sample bool) int {
 	}
 
 	return total
+}
+
+func Part2(sample bool) int {
+  input := parseInput(sample)
+  fmt.Println(input)
+
+  return 0
 }

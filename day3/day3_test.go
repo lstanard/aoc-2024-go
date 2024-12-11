@@ -12,9 +12,17 @@ func TestPart1_SampleData(t *testing.T) {
 	}
 }
 
-func TestPart2_SampleData(t *testing.T) {
+func TestPart1(t *testing.T) {
 	result := day3.Part1(false)
 	if result != 173785482 {
-		t.Errorf("Expected 161, got %d", result)
+		t.Errorf("Expected 173785482, got %d", result)
 	}
 }
+
+func TestPart2_SampleData(t *testing.T) {
+	result := day3.Part2(true)
+	if result != 48 {
+		t.Errorf("Expected 48, got %d", result)
+	}
+}
+
