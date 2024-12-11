@@ -18,4 +18,3 @@ func TestPart2_SampleData(t *testing.T) {
 		t.Errorf("Expected 161, got %d", result)
 	}
 }
-

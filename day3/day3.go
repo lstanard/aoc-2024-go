@@ -19,26 +19,26 @@ func parseInput(sample bool) string {
 		return "error!"
 	}
 
-  return string(data[:])
+	return string(data[:])
 }
 
 func Part1(sample bool) int {
 	input := parseInput(sample)
 
-  pattern := `mul\(\d+,\d+\)`
-  re := regexp.MustCompile(pattern)
-  allMatches := re.FindAllString(input, -1)
+	pattern := `mul\(\d+,\d+\)`
+	re := regexp.MustCompile(pattern)
+	allMatches := re.FindAllString(input, -1)
 
-  total := 0
-  for _, match := range allMatches {
-    nums := regexp.MustCompile(`\d+`).FindAllString(match, -1)
-    num1 := nums[0]
-    num2 := nums[1]
-    num1Int, _ := strconv.Atoi(num1)
-    num2Int, _ := strconv.Atoi(num2)
-    product := num1Int * num2Int
-    total += product
-  }
+	total := 0
+	for _, match := range allMatches {
+		nums := regexp.MustCompile(`\d+`).FindAllString(match, -1)
+		num1 := nums[0]
+		num2 := nums[1]
+		num1Int, _ := strconv.Atoi(num1)
+		num2Int, _ := strconv.Atoi(num2)
+		product := num1Int * num2Int
+		total += product
+	}
 
 	return total
 }
