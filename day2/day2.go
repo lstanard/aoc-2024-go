@@ -65,21 +65,21 @@ func getSafeCount(lines []string, useDampener bool) int {
 		}
 
 		sNums := strings.Fields(line)
-    safe := isLineSafe(sNums, "")
+		safe := isLineSafe(sNums, "")
 
-    // re-check all unsafe lines
-    if (useDampener && !safe) {
-      for i := range sNums {
-        subSet := make([]string, len(sNums))
-        copy(subSet, sNums)
-        subSet = slices.Delete(subSet, i, i+1)
-        subSetSafe := isLineSafe(subSet, "")
+		// re-check all unsafe lines
+		if useDampener && !safe {
+			for i := range sNums {
+				subSet := make([]string, len(sNums))
+				copy(subSet, sNums)
+				subSet = slices.Delete(subSet, i, i+1)
+				subSetSafe := isLineSafe(subSet, "")
 
-        if (subSetSafe) {
-          safe = true
-        }
-      }
-    }
+				if subSetSafe {
+					safe = true
+				}
+			}
+		}
 
 		if safe {
 			safeCount++
