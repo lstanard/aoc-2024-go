@@ -9,11 +9,11 @@ import (
 func parseInput(sample bool, part int) string {
 	path := ""
 	if sample {
-    if (part == 2) {
-      path = "input-sample-part2.txt"
-    } else {
-      path = "input-sample.txt"
-    }
+		if part == 2 {
+			path = "input-sample-part2.txt"
+		} else {
+			path = "input-sample.txt"
+		}
 	} else {
 		path = "input.txt"
 	}
@@ -27,13 +27,13 @@ func parseInput(sample bool, part int) string {
 }
 
 func multiply(mul string) int {
-  nums := regexp.MustCompile(`\d+`).FindAllString(mul, -1)
-  num1 := nums[0]
-  num2 := nums[1]
-  num1Int, _ := strconv.Atoi(num1)
-  num2Int, _ := strconv.Atoi(num2)
-  product := num1Int * num2Int
-  return product
+	nums := regexp.MustCompile(`\d+`).FindAllString(mul, -1)
+	num1 := nums[0]
+	num2 := nums[1]
+	num1Int, _ := strconv.Atoi(num1)
+	num2Int, _ := strconv.Atoi(num2)
+	product := num1Int * num2Int
+	return product
 }
 
 func Part1(sample bool) int {
@@ -45,7 +45,7 @@ func Part1(sample bool) int {
 
 	total := 0
 	for _, match := range allMatches {
-    product := multiply(match)
+		product := multiply(match)
 		total += product
 	}
 
@@ -53,24 +53,24 @@ func Part1(sample bool) int {
 }
 
 func Part2(sample bool) int {
-  input := parseInput(sample, 2)
+	input := parseInput(sample, 2)
 
-  pattern := `mul\(\d+,\d+\)|don't|do`
-  re := regexp.MustCompile(pattern)
-  allMatches := re.FindAllString(input, -1)
+	pattern := `mul\(\d+,\d+\)|don't|do`
+	re := regexp.MustCompile(pattern)
+	allMatches := re.FindAllString(input, -1)
 
-  total := 0
-  shouldMultiply := true
-  for _, match := range allMatches {
-    if (match == "don't") {
-      shouldMultiply = false
-    } else if (match == "do") {
-      shouldMultiply = true
-    } else if (shouldMultiply) {
-      product := multiply(match)
-      total += product
-    }
-  }
+	total := 0
+	shouldMultiply := true
+	for _, match := range allMatches {
+		if match == "don't" {
+			shouldMultiply = false
+		} else if match == "do" {
+			shouldMultiply = true
+		} else if shouldMultiply {
+			product := multiply(match)
+			total += product
+		}
+	}
 
-  return total
+	return total
 }
