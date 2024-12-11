@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func ParseInput(sample bool) []string {
+func parseInput(sample bool) []string {
 	path := ""
 	if sample {
 		path = "input-sample.txt"
@@ -89,14 +89,14 @@ func getSafeCount(lines []string, useDampener bool) int {
 }
 
 func Part1(sample bool) int {
-	lines := ParseInput(sample)
+	lines := parseInput(sample)
 	safeCount := getSafeCount(lines, false)
 
 	return safeCount
 }
 
 func Part2(sample bool) int {
-	lines := ParseInput(sample)
+	lines := parseInput(sample)
 	safeCount := getSafeCount(lines, true)
 
 	return safeCount
