@@ -26,3 +26,9 @@ func TestPart2_SampleData(t *testing.T) {
 	}
 }
 
+func TestPart2(t *testing.T) {
+	result := day3.Part2(false)
+	if result != 83158140 {
+		t.Errorf("Expected 83158140, got %d", result)
+	}
+}
