@@ -22,37 +22,43 @@ func parseInput(sample bool) []string {
 	return lines
 }
 
+// Grid traversal / depth-first search
+// https://www.youtube.com/watch?v=w8DYqrWjX1w
 func Part1(sample bool) int {
   lines := parseInput(sample)
   fmt.Println(lines)
 
-  // Turn each line into an array of strings
-  // Go through each line and stop whenever an "X" is found
-  // Begin checking for occurences of "M"
-  // Horizontally:
-  // Is "M" the next letter?
-  // Is "M" the previous letter?
-  // Vertically:
-  // Does "M" occur directly above "X"?
-  // Does "M" occur directly below "X"?
-  // Diagonally:
-  // Keep in mind if there are fewer rows above/below we can exit early. i.e. no need to check up if this is the first 3 rows
-  // Does "M" occur on the line above, but i - 1?
-  // Does "M" occur on the line above, but i + 1?
-  // Does "M" occur on the line below, but i - 1?
-  // Does "M" occur on the line below, but i + 1?
-  // If no occurence of "M" is found we can exit early
-  // If "M" is found in one of those positions...
-  // Repeat these instructions for each letter in "XMAS" until the end
+  // Directions for grid traversal
+  // directions := [8][2]int{
+  //   {0,1},    // up
+  //   {1,1},    // up-right
+  //   {1,0},    // right
+  //   {-1,0},   // left
+  //   {-1,-1},  // down-left
+  //   {0,-1},   // down
+  //   {1,-1},   // down-right
+  //   {-1,1},   // up-left
+  // }
+  // OR word := "XMAS"? Depends
+  letters := [4]string{"X", "M", "A", "S"}
+  letterIndex := 0
+  rows := len(lines)
+  // cols := len(lines[0])
+  // visited := make([][]bool, rows)
 
-  // Half-baked idea:
-  // Could some kind of [x,y] coordinates be helpful here?
-  // Map each letter to an [x,y] coordinate, then apply rules to every occurence of "X"?
-  // Example: "X" at [5,1] would check for "M" at [4,1] [6,1] [5,2] [4,2] [6,2]
-  // x coordinate is less than 4 so no need to check up
-  // As we continue this pattern, would need to know which "direction" we're going in
-  // For example, we could find an "X" at [5,1], then a "M" at [6,2], but the only valid "A" would be at [7,3]
-  // Also need to keep in mind that a single "X" could have multiple instances of "XMAS" branching off of it in different directions
+  // Loop through each row
+  for i := 0; i < rows; i++ {
+    // Loop through each character in the row
+    row := lines[i]
+    for j := 0; j < len(row); j++ {
+      // OR char := lines[i][j]
+      char := string(row[j])
+      if char == letters[letterIndex] {
+        // for _, dir := range directions {
+        // }
+      }
+    }
+  }
 
   return 0
 }
